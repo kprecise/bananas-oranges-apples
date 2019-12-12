@@ -1,0 +1,58 @@
+
+.container {
+   width: 98%;
+}
+
+h1.heading {
+    font-size: 3rem;
+    background: -webkit-linear-gradient(#005AA5, #14BA85);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+}
+
+h2.heading {
+    font-size: 1.5rem;
+    color: #005AA5;
+    margin: 0 0 1rem;
+}
+
+/** formPage **/
+.formPage {
+    margin-top: 1rem;
+}
+
+/** formPage - shoppingForm **/
+.formPage .shoppingForm form {
+    background: #EFF9F6;
+    padding: 1rem;
+}
+.formPage .shoppingForm .smallButton {
+    display: inline-block;
+    margin: 0 0.1rem 0 1rem;
+}
+
+.formPage .shoppingForm label {
+    min-width: 100px;
+}
+
+.formPage .shoppingForm .btn.btn-primary {
+    margin-right: 1rem;
+}
+
+.formPage .shoppingForm .smallInput.form-control {
+    display: inline-block;
+    max-width: 50px;
+    text-align: center;
+}
+
+/** formPage - summary **/
+.formPage .summary {
+    margin-top: 2rem;
+}
+
+.formPage .summary .order {
+    padding: 1rem;
+    background-color: #005AA5;
+    color: #fff;
+}
