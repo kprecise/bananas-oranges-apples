@@ -33,9 +33,9 @@ const FormPage = () => {
   }
 
   const checkFruitType = (fruitName) => {
-    if (fruitName === 'bananas'){
+    if (fruitName === "bananas"){
       return bananas
-    } else if (fruitName=== 'oranges') {
+    } else if (fruitName === "oranges") {
       return oranges
     } else {
       return apples
@@ -50,7 +50,11 @@ const FormPage = () => {
 
   const decrementCounter = (itemName, oldValue) => {
     const payloadObject = {}
-    payloadObject[itemName] = oldValue - 1;
+    if (oldValue <= 0) {
+      payloadObject[itemName] = 0;
+    } else {
+      payloadObject[itemName] = oldValue - 1;
+    }
     dispatchCounter({type: DECREMENT, payload: payloadObject })
   }
 

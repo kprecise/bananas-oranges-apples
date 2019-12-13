@@ -31,7 +31,7 @@ const ShoppingForm = (
         {fruitList.map(result => (
           <FormGroup key={result.id}>
             <Label for={result.text}>{result.text}</Label>
-            <Input className="smallInput" type="text" name={result.text} value={checkFruitType(result.text)} />
+            <Input className="smallInput" type="text" name={result.text} value={checkFruitType(result.text)} readOnly />
             <Button className="smallButton" color="secondary" value={result.text} onClick={e => decrementCounter(e.target.value, checkFruitType(result.text))}>-</Button>
             <Button className="smallButton" color="secondary" value={result.text} onClick={e => incrementCounter(e.target.value,  checkFruitType(result.text))}>+</Button>
           </FormGroup>

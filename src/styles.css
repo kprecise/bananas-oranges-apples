@@ -17,6 +17,12 @@ h2.heading {
     margin: 0 0 1rem;
 }
 
+h3.heading {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+}
+
 /** formPage **/
 .formPage {
     margin-top: 1rem;
@@ -48,11 +54,20 @@ h2.heading {
 
 /** formPage - summary **/
 .formPage .summary {
-    margin-top: 2rem;
+    margin: 2rem 0;
+
 }
 
 .formPage .summary .order {
     padding: 1rem;
     background-color: #005AA5;
     color: #fff;
+}
+
+.formPage .summary .order .element {
+    text-transform: capitalize;
+}
+
+.formPage .summary .order hr {
+    border-color: #fff;
 }
