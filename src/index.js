@@ -7,7 +7,7 @@ import FormPage from './containers/formPage';
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles.css'
 
-export const Store = createContext()
+const Store = createContext()
 
 const App =() => {
   const [state, dispatch] = useReducer(rootReducer,[]);
