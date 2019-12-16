@@ -37,18 +37,15 @@ The FormPage is a container that has all of the `functions`, `states`, `variable
       <Summary
         dispatchOrder={dispatchOrder}
         fruitList={fruitList}
-        checkFruitType={checkFruitType}
         firstName={firstName}
         surname={surname}
         isFormSubmitted={formSubmitted}
       />
 
       <ShoppingForm
-        resetCounter={resetCounter}
         incrementCounter={incrementCounter}
         decrementCounter={decrementCounter}
         fruitList={fruitList}
-        checkFruitType={checkFruitType}
         addFirstName={addFirstName}
         addSurname={addSurname}
         firstName={firstName}
