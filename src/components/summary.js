@@ -6,8 +6,7 @@ const Summary = (
     isFormSubmitted,
     firstName,
     surname,
-    fruitList,
-    checkFruitType
+    fruitList
   }) => {
   return (
     <div className="summary">
@@ -21,8 +20,8 @@ const Summary = (
           <h3 className="heading">Order</h3>
           {fruitList.map(fruit => {
             return (
-              <div key={fruit.id} className="element">
-                {fruit.text}: {checkFruitType(fruit.text)}
+              <div key={fruit.key} className="element">
+                {fruit.name}: {fruit.value}
               </div>
             )
           })}

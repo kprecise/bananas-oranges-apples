@@ -2,27 +2,21 @@ import React, { useReducer, useState } from "react"
 import ShoppingForm from '../components/shoppingForm';
 import Summary from '../components/summary';
 import countReducer from '../reducers/countReducer';
-import { DECREMENT, INCREMENT, RESET } from '../actionTypes';
+import { DECREMENT, INCREMENT } from '../actionTypes';
 import orderReducer from '../reducers/orderReducer';
 import { Row, Col } from 'reactstrap'
 
-const initialState = {
-  bananas: 0,
-  apples: 0,
-  oranges: 0
-}
-
 const fruitList = [
-  { id: 1, text: "bananas"},
-  { id: 2, text: "apples"},
-  { id: 3, text: "oranges"}
+  {key: 1, name: 'bananas', value: 0},
+  {key: 2, name: 'apples', value: 0},
+  {key: 3, name: 'oranges', value: 0}
 ]
 
 const FormPage = () => {
   const [firstName, setFirstName] = useState('')
   const [surname, setSurname] = useState('')
-  const [{bananas, oranges, apples}, dispatchCounter] = useReducer(countReducer, initialState);
-  const [dispatchOrder] = useReducer(orderReducer, initialState);
+  const [counter, dispatchCounter] = useReducer(countReducer, fruitList);
+  const [dispatchOrder] = useReducer(orderReducer, fruitList);
   const [formSubmitted, setFormSubmitted] = useState(false)
 
   const addFirstName = (name) => {
@@ -32,34 +26,25 @@ const FormPage = () => {
     setSurname(surname)
   }
 
-  const checkFruitType = (fruitName) => {
-    if (fruitName === "bananas"){
-      return bananas
-    } else if (fruitName === "oranges") {
-      return oranges
-    } else {
-      return apples
-    }
+  const getItemFromName = (fruitName) => {
+    const item = fruitList.filter( fruit => fruit.name === fruitName);
+    return item[0]
+  };
+
+  const incrementCounter = (fruitName) => {
+    const payloadObject = getItemFromName(fruitName);
+    payloadObject.value += 1;
+    dispatchCounter({type: INCREMENT, payload: payloadObject });
   }
 
-  const incrementCounter = (itemName, oldValue) => {
-    const payloadObject = {}
-    payloadObject[itemName] = oldValue + 1;
-    dispatchCounter({type: INCREMENT, payload: payloadObject })
-  }
-
-  const decrementCounter = (itemName, oldValue) => {
-    const payloadObject = {}
-    if (oldValue <= 0) {
-      payloadObject[itemName] = 0;
+  const decrementCounter = (fruitName) => {
+    const payloadObject = getItemFromName(fruitName);
+    if (payloadObject.value <= 0) {
+      payloadObject.value = 0;
     } else {
-      payloadObject[itemName] = oldValue - 1;
+      payloadObject.value = payloadObject.value - 1;
     }
     dispatchCounter({type: DECREMENT, payload: payloadObject })
-  }
-
-  const resetCounter = () => {
-    dispatchCounter({type: RESET })
   }
 
   const submitForm = event => {
@@ -80,11 +65,9 @@ const FormPage = () => {
       <Row>
         <Col xs="12">
           <ShoppingForm
-            resetCounter={resetCounter}
             incrementCounter={incrementCounter}
             decrementCounter={decrementCounter}
             fruitList={fruitList}
-            checkFruitType={checkFruitType}
             addFirstName={addFirstName}
             addSurname={addSurname}
             firstName={firstName}
@@ -98,7 +81,6 @@ const FormPage = () => {
           <Summary
             dispatchOrder={dispatchOrder}
             fruitList={fruitList}
-            checkFruitType={checkFruitType}
             firstName={firstName}
             surname={surname}
             isFormSubmitted={formSubmitted}

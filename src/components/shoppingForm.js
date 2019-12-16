@@ -6,9 +6,7 @@ const ShoppingForm = (
   {
     incrementCounter,
     decrementCounter,
-    resetCounter,
     fruitList,
-    checkFruitType,
     addFirstName,
     addSurname,
     firstName,
@@ -29,15 +27,14 @@ const ShoppingForm = (
           <Input type="text" name="surname" onChange={e => addSurname(e.target.value)} value={surname}/>
         </FormGroup>
         {fruitList.map(result => (
-          <FormGroup key={result.id}>
-            <Label for={result.text}>{result.text}</Label>
-            <Input className="smallInput" type="text" name={result.text} value={checkFruitType(result.text)} readOnly />
-            <Button className="smallButton" color="secondary" value={result.text} onClick={e => decrementCounter(e.target.value, checkFruitType(result.text))}>-</Button>
-            <Button className="smallButton" color="secondary" value={result.text} onClick={e => incrementCounter(e.target.value,  checkFruitType(result.text))}>+</Button>
+          <FormGroup key={result.key}>
+            <Label for={result.name}>{result.name}</Label>
+            <Input className="smallInput" type="text" name={result.name} value={result.value} readOnly />
+            <Button className="smallButton" color="secondary" value={result.name} onClick={e => decrementCounter(e.target.value, result.value)}>-</Button>
+            <Button className="smallButton" color="secondary" value={result.name} onClick={e => incrementCounter(e.target.value, result.value)}>+</Button>
           </FormGroup>
         ))}
         <Button color="primary">Submit</Button>
-        <Button color="secondary" onClick={resetCounter}>Reset</Button>
       </Form>
     </div>
   )
