@@ -5,6 +5,7 @@ import * as serviceWorker from "./serviceWorker"
 import { Col, Container, Row } from 'reactstrap'
 import FormPage from './containers/formPage';
 import 'bootstrap/dist/css/bootstrap.css';
+
 import './styles.css'
 
 const Store = createContext()
